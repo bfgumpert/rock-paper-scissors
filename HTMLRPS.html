@@ -7,18 +7,62 @@
 <body>
   <script>
 
+    let winMessage = "You Win! "
+    let loseMessage = "You Lose! "
+    const tieMessage = "You Tie!"
+
     function computerPlay() {
         //randomize rock, paper or scissors. return string
         let gameOutcomes = ["rock","paper","scissors"];
-        return gameOutcomes[Math.floor(Math.random() * 3)];
+        let string1 = gameOutcomes[Math.floor(Math.random() * 3)];
+        return string1.toUpperCase();
     }
 
     function oneRound(playerSelection, computerSelection) {
         //take in these two parameters, then output a string to display winner/loser
-
+        if (playerSelection == "ROCK") {
+          if (computerSelection == "ROCK") {
+            return tieMessage;
+          }
+          else if (computerSelection == "PAPER") {
+            return loseMessage + computerSelection + " beats " + playerSelection;
+          }
+          else {
+            return winMessage + playerSelection + " beats " + computerSelection;
+          }
+        }
+        else if (playerSelection == "PAPER") {
+          if (computerSelection == "PAPER") {
+            return tieMessage;
+          }
+          else if (computerSelection == "SCISSORS") {
+            return loseMessage + computerSelection + " beats " + playerSelection;
+          }
+          else {
+            return winMessage + playerSelection + " beats " + computerSelection;
+          }
+        }
+        else if (playerSelection == "SCISSORS") {
+          if (computerSelection == "SCISSORS") {
+            return tieMessage;
+          }
+          else if (computerSelection == "ROCK") {
+            return loseMessage + computerSelection + " beats " + playerSelection;
+          }
+          else {
+            return winMessage + playerSelection + " beats " + computerSelection;
+          }
+        }
+        else {
+          return "Please enter a valid entry";
+        }
     }
 
-    console.log(computerPlay())
+    let playerSelection = "Pasdf";
+    let computerSelection = computerPlay();
+
+    console.log(computerSelection);
+    console.log(oneRound(playerSelection, computerSelection));
   </script>
 </body>
 </html>
