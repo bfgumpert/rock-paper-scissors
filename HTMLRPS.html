@@ -25,9 +25,11 @@
             return tieMessage;
           }
           else if (computerSelection == "PAPER") {
+            computerScore++;
             return loseMessage + computerSelection + " beats " + playerSelection;
           }
           else {
+            playerScore++;
             return winMessage + playerSelection + " beats " + computerSelection;
           }
         }
@@ -36,9 +38,11 @@
             return tieMessage;
           }
           else if (computerSelection == "SCISSORS") {
+            computerScore++;
             return loseMessage + computerSelection + " beats " + playerSelection;
           }
           else {
+            playerScore++;
             return winMessage + playerSelection + " beats " + computerSelection;
           }
         }
@@ -47,9 +51,11 @@
             return tieMessage;
           }
           else if (computerSelection == "ROCK") {
+            computerScore++;
             return loseMessage + computerSelection + " beats " + playerSelection;
           }
           else {
+            playerScore++;
             return winMessage + playerSelection + " beats " + computerSelection;
           }
         }
@@ -58,11 +64,39 @@
         }
     }
 
+    function game() {
+
+      let round = 0
+
+      for (let i = 0; i < 5; i++) {
+        playerSelection = prompt("Enter Rock, Paper, or Scissors:").toUpperCase();
+        computerSelection = computerPlay();
+        round++;
+
+        console.log(computerSelection);
+        console.log(oneRound(playerSelection, computerSelection));
+        console.log("Player Score: " + playerScore);
+        console.log("Computer Score: " + computerScore);
+        console.log("Round: " + round + "/5")
+      }
+
+      if (playerScore > computerScore) {
+        return "You're Winner!";
+      }
+      else if (playerScore < computerScore) {
+        return "You are trash, you lost!"
+      }
+      else {
+        return "You Tied!"
+      }
+    }
+
     let playerSelection = "Pasdf";
     let computerSelection = computerPlay();
+    let playerScore = 0;
+    let computerScore = 0;
 
-    console.log(computerSelection);
-    console.log(oneRound(playerSelection, computerSelection));
+    console.log(game());
   </script>
 </body>
 </html>
